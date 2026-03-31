@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>神书软件</title>
+    <title>神书软件工作室</title>
     <style>
         * {
             margin: 0;
@@ -15,20 +15,22 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        .card {
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 头部卡片 */
+        .header {
             background: white;
             border-radius: 24px;
             padding: 40px 32px;
-            max-width: 500px;
-            width: 100%;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            margin-bottom: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -46,123 +48,193 @@
         }
 
         h1 {
-            font-size: 28px;
+            font-size: 32px;
             color: #333;
             margin-bottom: 8px;
         }
 
         .subtitle {
             color: #666;
-            margin-bottom: 32px;
-            font-size: 14px;
+            font-size: 16px;
+        }
+
+        /* 软件列表 */
+        .software-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 单个软件卡片 */
+        .software-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .software-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 软件信息区域 */
+        .software-info {
+            flex: 1;
+        }
+
+        .software-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .software-icon {
+            font-size: 28px;
         }
 
         .version {
             background: #f0f0f0;
-            display: inline-block;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 12px;
             color: #666;
-            margin-bottom: 24px;
+            font-weight: normal;
         }
 
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-bottom: 32px;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .info {
-            background: #f8f9fa;
-            border-radius: 16px;
-            padding: 20px;
-            text-align: left;
-        }
-
-        .info h3 {
+        .software-desc {
             font-size: 14px;
-            color: #333;
-            margin-bottom: 12px;
-        }
-
-        .info ul {
-            list-style: none;
-        }
-
-        .info li {
-            font-size: 13px;
-            color: #666;
+            color: #888;
             margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
         }
 
-        .info li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .footer {
-            margin-top: 24px;
+        .file-info {
             font-size: 12px;
             color: #999;
         }
 
-        @media (max-width: 480px) {
-            .card {
-                padding: 32px 24px;
+        /* 下载按钮 */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .software-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .software-info {
+                text-align: center;
+            }
+            
+            .software-name {
+                justify-content: center;
             }
             
             .download-btn {
-                padding: 14px 32px;
-                font-size: 16px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .header {
+                padding: 32px 24px;
+            }
+            
+            h1 {
+                font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="logo">
-            <span>📱</span>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="logo">
+                <span>📱</span>
+            </div>
+            <h1>工作室软件中心</h1>
+            <p class="subtitle">专业软件 · 用心出品 · 免费下载</p>
         </div>
-        <h1>神书软件</h1>
-        <p class="subtitle">专业软件 · 用心出品</p>
-        <div class="version">老年人能力评估 </div>
-        <div class="version">版本 v1.0.0 </div>
-        
-        <a href="Elderly_Ability_Assessmentrelease.apk" class="download-btn" download>
-            立即下载 APK
-        </a>
-        
-        <div class="info">
-            <h3>📋 软件说明</h3>
-            <ul>
-                <li>支持 Android 7.0 及以上系统</li>
-                <li>安装前请允许"未知来源"安装权限</li>
-                <li>如遇安装问题，请联系客服</li>
-            </ul>
+
+        <!-- 软件列表 -->
+        <div class="software-list">
+            <!-- 软件1 -->
+            <div class="software-card">
+                <div class="software-info">
+                    <div class="software-name">
+                        <span class="software-icon">📱</span>
+                        老年人能力评估
+                        <span class="version">v2.1.0</span>
+                    </div>
+                    <div class="software-desc">快捷评估老年人能力</div>
+                    <div class="file-info">大小: 32.5 MB | 更新: 2024-12-01</div>
+                </div>
+                <a href="Elderly_Ability_Assessmentrelease.apk" class="download-btn" download>
+                    📥 下载
+                </a>
+            </div>
+
+            <!-- 软件2 -->
+            <div class="software-card">
+                <div class="software-info">
+                    <div class="software-name">
+                        <span class="software-icon">📱</span>
+                        老年人能力评估
+                        <span class="version">v2.1.0</span>
+                    </div>
+                    <div class="software-desc">快捷评估老年人能力</div>
+                    <div class="file-info">大小: 32.5 MB | 更新: 2024-12-01</div>
+                </div>
+                <a href="Elderly_Ability_Assessmentrelease.apk" class="download-btn" download>
+                    📥 下载
+                </a>
+            </div>
+
+            
         </div>
-        
+
         <div class="footer">
-            © 2024 工作室名称 · 保留所有权利
+            <p>© 2024 工作室名称 · 所有软件均为免费提供</p>
+            <p style="font-size: 12px; margin-top: 8px;">Android 7.0 及以上版本支持 | 安装前请允许"未知来源"安装权限</p>
         </div>
     </div>
 </body>
