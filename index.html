@@ -47,6 +47,19 @@
             color: white;
         }
 
+        /* 图片logo样式覆盖 - 移除渐变背景，让图片完整显示 */
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 20px;
+        }
+
+        /* 如果图片加载失败，保留渐变背景和备用emoji样式 */
+        .logo:has(img:only-child) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
         h1 {
             font-size: 32px;
             color: #333;
@@ -186,10 +199,11 @@
 </head>
 <body>
     <div class="container">
-        <!-- 头部 -->
+        <!-- 头部： 图片 -->
         <div class="header">
             <div class="logo">
-                <span>📱</span>
+           
+                <img src="/png/studioLogo.png" alt="神书工作室Logo" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<span>📱</span>';">
             </div>
             <h1>神书工作室</h1>
             <p class="subtitle">专业软件 · 用心出品</p>
@@ -217,7 +231,7 @@
                 </a>
             </div>
 
-            <!-- 软件2 -->
+            <!-- 软件2 注释保留 -->
             <!-- <div class="software-card">
                 <div class="software-info">
                     <div class="software-name">
@@ -226,7 +240,7 @@
                         <span class="version">v2.1.0</span>
                     </div>
                     <div class="software-desc">根据GB/T 42195—2022标准，快捷评估老年人能力</div>
-                    <div class="file-info">大小: 32.5 MB | 更新: 2024-12-01</div>
+                    <div class="file-info">大小: 32.5 MB | 更新: 2025-04-02</div>
                 </div>
                 <a href="apk/Elderly_Ability_Assessment_1.0_release.apk" class="download-btn" download>
                     📥 下载
