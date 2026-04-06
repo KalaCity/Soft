@@ -1,0 +1,17 @@
+{
+  "apps": [
+    {
+      "appId": "com.lssSoft.elderlyabilityassessment",
+      "name": "老年人能力评估",
+      "price": 168,
+      "currency": "¥",
+      "version": "1.0.0"
+    },
+    {
+      "appId": "com.Test.app",
+      "name": "Test",
+      "price": 88,
+      "currency": "¥",
+    }
+  ]
+}
