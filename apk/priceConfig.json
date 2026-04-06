@@ -11,7 +11,7 @@
       "appId": "com.Test.app",
       "name": "Test",
       "price": 88,
-      "currency": "¥",
+      "currency": "¥"
     }
   ]
 }
